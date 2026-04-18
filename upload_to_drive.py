@@ -61,3 +61,18 @@ if __name__ == "__main__":
         sys.exit(1)
     else:
         upload_file(sys.argv[1])
+from flask import Flask, request
+
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return "Server is running!"
+
+@app.route('/upload', methods=['POST'])
+def upload():
+    # your existing Google Drive upload logic here
+    return "File uploaded successfully!"
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=10000)
